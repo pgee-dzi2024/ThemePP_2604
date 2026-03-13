@@ -2,143 +2,318 @@
 <html lang="bg">
 
 <head>
-    <meta charset="utf-8">
-    <title>За приложението – Дигитален скенер</title>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+<nav class="navbar navbar-expand-lg navbar-light bg-white px-4">
 
-    <!-- Favicon -->
-    <link href="img/favicon.ico" rel="icon">
+<a href="index.html" class="navbar-brand">
+<h2 class="text-primary">Дигитален скенер</h2>
+</a>
 
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Inter:wght@700;800&display=swap" rel="stylesheet">
+<div class="navbar-nav ms-auto">
 
-    <!-- Icons -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+<a href="index.html" class="nav-item nav-link">Начало</a>
 
-    <!-- Bootstrap -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
+<a href="about.html" class="nav-item nav-link">За системата</a>
+
+<a href="document-types.html" class="nav-item nav-link">Типове документи</a>
+
+<a href="contact.html" class="nav-item nav-link">Контакти</a>
+
+</div>
+
+</nav>
+<link href="img/favicon.ico" rel="icon">
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+
+<!-- Icons -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+
+<!-- Bootstrap -->
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="css/style.css" rel="stylesheet">
+
 </head>
 
 <body>
+
 <div class="container-xxl bg-white p-0">
 
 <!-- NAVBAR -->
-<nav class="navbar navbar-expand-lg bg-white navbar-light px-4">
-    <a href="index.html" class="navbar-brand">
-        <h1 class="m-0 text-primary">Дигитален скенер</h1>
-    </a>
+<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm px-4">
+<a href="index.html" class="navbar-brand">
+<h2 class="text-primary m-0">Дигитален скенер</h2>
+</a>
+
+<button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navMenu">
+<span class="navbar-toggler-icon"></span>
+</button>
+
+<div class="collapse navbar-collapse" id="navMenu">
+<ul class="navbar-nav ms-auto">
+
+<li class="nav-item">
+<a class="nav-link" href="index.html">Начало</a>
+</li>
+
+<li class="nav-item">
+<a class="nav-link active" href="#">За приложението</a>
+</li>
+
+<li class="nav-item">
+<a class="nav-link" href="#">Контакти</a>
+</li>
+
+</ul>
+</div>
 </nav>
 
+
 <!-- HEADER -->
-<div class="container-fluid bg-light p-5">
-    <div class="container">
-        <h1 class="display-5 mb-3">За приложението</h1>
-        <p>
-            „Дигитален скенер“ е вътрешна система за дигитализация и управление
-            на транспортна документация в логистични и транспортни фирми.
-        </p>
-    </div>
+<div class="container-fluid bg-light py-5">
+<div class="container text-center">
+
+<h1 class="display-5 mb-3">За системата</h1>
+
+<p class="lead">
+„Дигитален скенер“ е система за дигитализация, съхранение и
+управление на транспортни документи в логистични компании.
+</p>
+
+<a href="index.html" class="btn btn-primary mt-3">
+<i class="bi bi-arrow-left"></i> Обратно към началото
+</a>
+
+</div>
 </div>
 
-<!-- ABOUT CONTENT -->
-<div class="container-xxl py-5">
-    <div class="container">
-        <div class="row g-5 align-items-center">
-            <div class="col-md-6">
-                <img class="img-fluid rounded" src="img/about.jpg" alt="">
-            </div>
-            <div class="col-md-6">
-                <h2 class="mb-4">Цел на системата</h2>
-                <p>
-                    Основната цел на приложението е да автоматизира обработката
-                    на хартиени документи като CMR, пътни листове и фактури чрез
-                    OCR разпознаване и дигитален архив.
-                </p>
-                <ul>
-                    <li>Намаляване на ръчната обработка</li>
-                    <li>По-добра проследимост на курсовете</li>
-                    <li>Централизирано съхранение на документи</li>
-                    <li>По-бърз достъп до информация</li>
-                </ul>
-            </div>
-        </div>
-    </div>
+
+<!-- PURPOSE -->
+<div class="container py-5">
+
+<div class="row g-5 align-items-center">
+
+<div class="col-lg-6">
+<img src="img/about.jpg" class="img-fluid rounded shadow">
 </div>
+
+<div class="col-lg-6">
+
+<h2 class="mb-4">Цел на системата</h2>
+
+<p>
+Системата автоматизира обработката на транспортни документи
+като CMR, пътни листове и фактури чрез OCR разпознаване.
+</p>
+
+<ul class="list-group list-group-flush">
+
+<li class="list-group-item">
+<i class="bi bi-check-circle text-success"></i>
+Намаляване на ръчната обработка
+</li>
+
+<li class="list-group-item">
+<i class="bi bi-check-circle text-success"></i>
+Проследяване на транспортни курсове
+</li>
+
+<li class="list-group-item">
+<i class="bi bi-check-circle text-success"></i>
+Централизирано съхранение
+</li>
+
+<li class="list-group-item">
+<i class="bi bi-check-circle text-success"></i>
+Бърз достъп до документи
+</li>
+
+</ul>
+
+</div>
+</div>
+</div>
+
 
 <!-- ARCHITECTURE -->
-<div class="container-xxl py-5 bg-light">
-    <div class="container">
-        <h2 class="text-center mb-5">Архитектура на решението</h2>
-        <div class="row text-center g-4">
-            <div class="col-md-3">
-                <h5>Клиентски интерфейс</h5>
-                <p>Уеб и мобилен достъп</p>
-            </div>
-            <div class="col-md-3">
-                <h5>OCR сървър</h5>
-                <p>Разпознаване на текст</p>
-            </div>
-            <div class="col-md-3">
-                <h5>База данни</h5>
-                <p>Метаданни и индексиране</p>
-            </div>
-            <div class="col-md-3">
-                <h5>Файлово хранилище</h5>
-                <p>Оригинални документи</p>
-            </div>
-        </div>
-    </div>
+<div class="container-fluid bg-light py-5">
+
+<div class="container">
+
+<h2 class="text-center mb-5">Архитектура на системата</h2>
+
+<div class="row g-4 text-center">
+
+<div class="col-md-3">
+<div class="card shadow-sm h-100">
+<div class="card-body">
+
+<i class="bi bi-display fs-1 text-primary"></i>
+<h5 class="mt-3">Клиентски интерфейс</h5>
+<p>Уеб и мобилен достъп</p>
+
 </div>
+</div>
+</div>
+
+<div class="col-md-3">
+<div class="card shadow-sm h-100">
+<div class="card-body">
+
+<i class="bi bi-file-earmark-text fs-1 text-primary"></i>
+<h5 class="mt-3">OCR сървър</h5>
+<p>Разпознаване на текст от документи</p>
+
+</div>
+</div>
+</div>
+
+<div class="col-md-3">
+<div class="card shadow-sm h-100">
+<div class="card-body">
+
+<i class="bi bi-database fs-1 text-primary"></i>
+<h5 class="mt-3">База данни</h5>
+<p>Съхранение на метаданни</p>
+
+</div>
+</div>
+</div>
+
+<div class="col-md-3">
+<div class="card shadow-sm h-100">
+<div class="card-body">
+
+<i class="bi bi-folder fs-1 text-primary"></i>
+<h5 class="mt-3">Файлово хранилище</h5>
+<p>Архив на оригиналните документи</p>
+
+</div>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+
 
 <!-- USERS -->
-<div class="container-xxl py-5">
-    <div class="container">
-        <h2 class="text-center mb-5">Кой използва системата</h2>
-        <div class="row text-center">
-            <div class="col-md-3">
-                <h5>Шофьори</h5>
-                <p>Заснемане и качване на документи</p>
-            </div>
-            <div class="col-md-3">
-                <h5>Диспечери</h5>
-                <p>Контрол и проследяване</p>
-            </div>
-            <div class="col-md-3">
-                <h5>Счетоводство</h5>
-                <p>Фактуриране и справки</p>
-            </div>
-            <div class="col-md-3">
-                <h5>Администратори</h5>
-                <p>Управление и сигурност</p>
-            </div>
-        </div>
-    </div>
+<div class="container py-5">
+
+<h2 class="text-center mb-5">Потребители на системата</h2>
+
+<div class="row g-4 text-center">
+
+<div class="col-md-3">
+<div class="card h-100 border-0 shadow-sm">
+
+<div class="card-body">
+
+<i class="bi bi-truck fs-1 text-primary"></i>
+<h5 class="mt-3">Шофьори</h5>
+<p>Снимат и качват документи</p>
+
 </div>
+</div>
+</div>
+
+<div class="col-md-3">
+<div class="card h-100 border-0 shadow-sm">
+
+<div class="card-body">
+
+<i class="bi bi-map fs-1 text-primary"></i>
+<h5 class="mt-3">Диспечери</h5>
+<p>Следят курсове и документи</p>
+
+</div>
+</div>
+</div>
+
+<div class="col-md-3">
+<div class="card h-100 border-0 shadow-sm">
+
+<div class="card-body">
+
+<i class="bi bi-cash-stack fs-1 text-primary"></i>
+<h5 class="mt-3">Счетоводство</h5>
+<p>Фактуриране и отчети</p>
+
+</div>
+</div>
+</div>
+
+<div class="col-md-3">
+<div class="card h-100 border-0 shadow-sm">
+
+<div class="card-body">
+
+<i class="bi bi-shield-lock fs-1 text-primary"></i>
+<h5 class="mt-3">Администратори</h5>
+<p>Управление на системата</p>
+
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
 
 <!-- SECURITY -->
-<div class="container-xxl py-5 bg-light">
-    <div class="container">
-        <h2 class="text-center mb-5">Сигурност и надеждност</h2>
-        <ul>
-            <li>Контрол на достъпа според роля</li>
-            <li>Локално съхранение на чувствителни данни</li>
-            <li>Резервни копия на архива</li>
-            <li>Защита от неоторизиран достъп</li>
-        </ul>
-    </div>
+<div class="container-fluid bg-light py-5">
+
+<div class="container">
+
+<h2 class="text-center mb-5">Сигурност</h2>
+
+<div class="row justify-content-center">
+<div class="col-md-8">
+
+<ul class="list-group">
+
+<li class="list-group-item">
+<i class="bi bi-shield-check text-success"></i>
+Контрол на достъп по роли
+</li>
+
+<li class="list-group-item">
+<i class="bi bi-lock text-success"></i>
+Защита на чувствителни данни
+</li>
+
+<li class="list-group-item">
+<i class="bi bi-cloud-arrow-down text-success"></i>
+Архив и резервни копия
+</li>
+
+<li class="list-group-item">
+<i class="bi bi-eye-slash text-success"></i>
+Защита от неоторизиран достъп
+</li>
+
+</ul>
+
 </div>
+</div>
+
+</div>
+</div>
+
 
 <!-- FOOTER -->
-<div class="container-fluid bg-dark text-white p-4 text-center">
-    <p class="mb-0">
-        Дигитален скенер – Система за дигитализация на транспортна документация
-    </p>
+<div class="container-fluid bg-dark text-white text-center py-4">
+
+<p class="mb-0">
+© 2026 Дигитален скенер – Система за дигитализация на транспортни документи
+</p>
+
 </div>
 
 </div>
+
+<script src="js/bootstrap.bundle.min.js"></script>
+
 </body>
 </html>
