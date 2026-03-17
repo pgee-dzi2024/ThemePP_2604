@@ -1,11 +1,15 @@
 from django.urls import path
-from .views import *
+from django.views.generic import TemplateView
+from .views import DocumentUploadView
 
-from django.conf import settings
-from django.conf.urls.static import static
+app_name = 'main'  # Добра практика е да задаваме име на приложението
 
 urlpatterns = [
-    path('', index, name='home'),
-]
+    # 1. Път за основната страница с интерфейса (Frontend с Vue.js)
+    # Използваме вградения TemplateView, за да заредим директно HTML файла,
+    # който ще създадем в следващата стъпка.
+    path('', TemplateView.as_view(template_name='main/index.html'), name='home'),
 
-urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    # 2. Път за API-то, което приема снимката и връща извлечения текст (Backend)
+    path('api/upload/', DocumentUploadView.as_view(), name='api-document-upload'),
+]

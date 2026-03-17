@@ -1,0 +1,167 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="bg">
+
+<head>
+    <meta charset="utf-8">
+    <title>Дигитален скенер – Транспортна документация</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <!-- Favicon -->
+    <link href="{% static 'img/favicon.ico' %}" rel="icon">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Inter:wght@700;800&display=swap" rel="stylesheet">
+
+    <!-- Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries -->
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+</head>
+
+<body>
+<div class="container-xxl bg-white p-0">
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg bg-white navbar-light px-4">
+    <a href="#" class="navbar-brand">
+        <h1 class="m-0 text-primary">Дигитален скенер</h1>
+    </a>
+</nav>
+
+<!-- HEADER -->
+<div class="container-fluid bg-light p-5">
+    <div class="container">
+        <h1 class="display-5 mb-4">
+            Дигитализация на <span class="text-primary">транспортна документация</span>
+        </h1>
+        <p>
+            Сканиране, OCR разпознаване и централен дигитален архив на CMR, пътни листове и фактури.
+        </p>
+    </div>
+</div>
+
+<!-- UPLOAD / OCR -->
+<div class="container-fluid bg-primary p-5">
+    <div class="container">
+        <div class="row g-3">
+            <div class="col-md-4">
+                <input type="file" class="form-control py-3">
+            </div>
+            <div class="col-md-4">
+                <select class="form-select py-3">
+                    <option selected>Тип документ</option>
+                    <option>CMR</option>
+                    <option>Пътен лист</option>
+                    <option>Фактура</option>
+                </select>
+            </div>
+            <div class="col-md-4">
+                <button class="btn btn-dark w-100 py-3">
+                    OCR разпознаване
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- FEATURES -->
+<div class="container-xxl py-5">
+    <div class="container">
+        <h2 class="text-center mb-5">Основни функционалности</h2>
+        <div class="row g-4 text-center">
+            <div class="col-md-4">
+                <h5>Сканиране</h5>
+                <p>Заснемане и качване на документи</p>
+            </div>
+            <div class="col-md-4">
+                <h5>OCR разпознаване</h5>
+                <p>Автоматично извличане на текст</p>
+            </div>
+            <div class="col-md-4">
+                <h5>Дигитален архив</h5>
+                <p>Централизирано и сигурно съхранение</p>
+            </div>
+            <div class="col-md-4">
+                <h5>Търсене</h5>
+                <p>По номер на курс, CMR или клиент</p>
+            </div>
+            <div class="col-md-4">
+                <h5>Мобилно използване</h5>
+                <p>Заснемане от мобилни устройства</p>
+            </div>
+            <div class="col-md-4">
+                <h5>Интеграция</h5>
+                <p>Свързване със счетоводни и TMS системи</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- WORK PROCESS -->
+<div class="container-xxl py-5 bg-light">
+    <div class="container">
+        <h2 class="text-center mb-5">Реален работен процес</h2>
+        <ol>
+            <li>Предаване на хартиени документи от шофьор</li>
+            <li>Сканиране или заснемане</li>
+            <li>OCR разпознаване на текста</li>
+            <li>Проверка и корекция</li>
+            <li>Запазване в дигиталния архив</li>
+        </ol>
+    </div>
+</div>
+
+<!-- ROLES -->
+<div class="container-xxl py-5">
+    <div class="container">
+        <h2 class="text-center mb-5">Потребителски роли</h2>
+        <div class="row text-center">
+            <div class="col-md-3">
+                <h5>Шофьор</h5>
+                <p>Качване на документи</p>
+            </div>
+            <div class="col-md-3">
+                <h5>Диспечер</h5>
+                <p>Контрол на курсове</p>
+            </div>
+            <div class="col-md-3">
+                <h5>Счетоводител</h5>
+                <p>Фактуриране и отчети</p>
+            </div>
+            <div class="col-md-3">
+                <h5>Администратор</h5>
+                <p>Управление на системата</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- BENEFITS -->
+<div class="container-xxl py-5 bg-light">
+    <div class="container">
+        <h2 class="text-center mb-5">Ползи за фирмата</h2>
+        <ul>
+            <li>Намаляване на времето за обработка на документи</li>
+            <li>По-добра проследимост на курсовете</li>
+            <li>Централизиран дигитален архив</li>
+            <li>По-ниски административни разходи</li>
+        </ul>
+    </div>
+</div>
+
+<!-- FOOTER -->
+<div class="container-fluid bg-dark text-white p-4 text-center">
+    <p class="mb-0">
+        Дигитален скенер – Вътрешна система за транспортна документация
+    </p>
+</div>
+
+</div>
+</body>
+</html>

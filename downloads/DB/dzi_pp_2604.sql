@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1
--- Време на генериране:  8 фев 2026 в 23:19
+-- Време на генериране: 17 март 2026 в 12:21
 -- Версия на сървъра: 10.4.32-MariaDB
 -- Версия на PHP: 8.2.12
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- База данни: `dzi_2504`
+-- База данни: `dzi_pp_2604`
 --
 
 -- --------------------------------------------------------
@@ -27,7 +27,6 @@ SET time_zone = "+00:00";
 -- Структура на таблица `auth_group`
 --
 
-DROP TABLE IF EXISTS `auth_group`;
 CREATE TABLE `auth_group` (
   `id` int(11) NOT NULL,
   `name` varchar(150) NOT NULL
@@ -39,7 +38,6 @@ CREATE TABLE `auth_group` (
 -- Структура на таблица `auth_group_permissions`
 --
 
-DROP TABLE IF EXISTS `auth_group_permissions`;
 CREATE TABLE `auth_group_permissions` (
   `id` bigint(20) NOT NULL,
   `group_id` int(11) NOT NULL,
@@ -52,7 +50,6 @@ CREATE TABLE `auth_group_permissions` (
 -- Структура на таблица `auth_permission`
 --
 
-DROP TABLE IF EXISTS `auth_permission`;
 CREATE TABLE `auth_permission` (
   `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
@@ -88,7 +85,11 @@ INSERT INTO `auth_permission` (`id`, `name`, `content_type_id`, `codename`) VALU
 (21, 'Can add session', 6, 'add_session'),
 (22, 'Can change session', 6, 'change_session'),
 (23, 'Can delete session', 6, 'delete_session'),
-(24, 'Can view session', 6, 'view_session');
+(24, 'Can view session', 6, 'view_session'),
+(25, 'Can add document', 7, 'add_document'),
+(26, 'Can change document', 7, 'change_document'),
+(27, 'Can delete document', 7, 'delete_document'),
+(28, 'Can view document', 7, 'view_document');
 
 -- --------------------------------------------------------
 
@@ -96,7 +97,6 @@ INSERT INTO `auth_permission` (`id`, `name`, `content_type_id`, `codename`) VALU
 -- Структура на таблица `auth_user`
 --
 
-DROP TABLE IF EXISTS `auth_user`;
 CREATE TABLE `auth_user` (
   `id` int(11) NOT NULL,
   `password` varchar(128) NOT NULL,
@@ -124,7 +124,6 @@ INSERT INTO `auth_user` (`id`, `password`, `last_login`, `is_superuser`, `userna
 -- Структура на таблица `auth_user_groups`
 --
 
-DROP TABLE IF EXISTS `auth_user_groups`;
 CREATE TABLE `auth_user_groups` (
   `id` bigint(20) NOT NULL,
   `user_id` int(11) NOT NULL,
@@ -137,7 +136,6 @@ CREATE TABLE `auth_user_groups` (
 -- Структура на таблица `auth_user_user_permissions`
 --
 
-DROP TABLE IF EXISTS `auth_user_user_permissions`;
 CREATE TABLE `auth_user_user_permissions` (
   `id` bigint(20) NOT NULL,
   `user_id` int(11) NOT NULL,
@@ -150,7 +148,6 @@ CREATE TABLE `auth_user_user_permissions` (
 -- Структура на таблица `django_admin_log`
 --
 
-DROP TABLE IF EXISTS `django_admin_log`;
 CREATE TABLE `django_admin_log` (
   `id` int(11) NOT NULL,
   `action_time` datetime(6) NOT NULL,
@@ -168,7 +165,6 @@ CREATE TABLE `django_admin_log` (
 -- Структура на таблица `django_content_type`
 --
 
-DROP TABLE IF EXISTS `django_content_type`;
 CREATE TABLE `django_content_type` (
   `id` int(11) NOT NULL,
   `app_label` varchar(100) NOT NULL,
@@ -185,6 +181,7 @@ INSERT INTO `django_content_type` (`id`, `app_label`, `model`) VALUES
 (2, 'auth', 'permission'),
 (4, 'auth', 'user'),
 (5, 'contenttypes', 'contenttype'),
+(7, 'main', 'document'),
 (6, 'sessions', 'session');
 
 -- --------------------------------------------------------
@@ -193,7 +190,6 @@ INSERT INTO `django_content_type` (`id`, `app_label`, `model`) VALUES
 -- Структура на таблица `django_migrations`
 --
 
-DROP TABLE IF EXISTS `django_migrations`;
 CREATE TABLE `django_migrations` (
   `id` bigint(20) NOT NULL,
   `app` varchar(255) NOT NULL,
@@ -223,7 +219,8 @@ INSERT INTO `django_migrations` (`id`, `app`, `name`, `applied`) VALUES
 (15, 'auth', '0010_alter_group_name_max_length', '2025-03-31 18:08:46.130864'),
 (16, 'auth', '0011_update_proxy_permissions', '2025-03-31 18:08:46.135961'),
 (17, 'auth', '0012_alter_user_first_name_max_length', '2025-03-31 18:08:46.145454'),
-(18, 'sessions', '0001_initial', '2025-03-31 18:08:46.169515');
+(18, 'sessions', '0001_initial', '2025-03-31 18:08:46.169515'),
+(19, 'main', '0001_initial', '2026-03-17 11:03:10.956189');
 
 -- --------------------------------------------------------
 
@@ -231,7 +228,6 @@ INSERT INTO `django_migrations` (`id`, `app`, `name`, `applied`) VALUES
 -- Структура на таблица `django_session`
 --
 
-DROP TABLE IF EXISTS `django_session`;
 CREATE TABLE `django_session` (
   `session_key` varchar(40) NOT NULL,
   `session_data` longtext NOT NULL,
@@ -244,6 +240,27 @@ CREATE TABLE `django_session` (
 
 INSERT INTO `django_session` (`session_key`, `session_data`, `expire_date`) VALUES
 ('vumo0g2lnplbceigjncos53emyiynlkl', '.eJxVjDsOwjAQBe_iGln-ZZ1Q0ucM0Xp3wQFkS3FSIe4OkVJA-2bmvdSE25qnrckyzazOyqrT75aQHlJ2wHcst6qplnWZk94VfdCmx8ryvBzu30HGlr91BxAG9rYj7wafqE8uBgCyEpGZUNgkj9AjBTRG0F8tsoCJ4FyIROr9AeMjOEk:1u6HH6:1DaTNGsTRcpQc-m7MQ3BZzyBPbpKCF6ASuWj3TOPT7c', '2025-05-03 23:07:04.185681');
+
+-- --------------------------------------------------------
+
+--
+-- Структура на таблица `main_document`
+--
+
+CREATE TABLE `main_document` (
+  `id` bigint(20) NOT NULL,
+  `image` varchar(100) NOT NULL,
+  `extracted_text` longtext DEFAULT NULL,
+  `uploaded_at` datetime(6) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Схема на данните от таблица `main_document`
+--
+
+INSERT INTO `main_document` (`id`, `image`, `extracted_text`, `uploaded_at`) VALUES
+(1, 'documents/Untitled.jpg', NULL, '2026-03-17 11:14:58.710805'),
+(2, 'documents/Untitled_hxu8Vff.jpg', NULL, '2026-03-17 11:15:02.520496');
 
 --
 -- Indexes for dumped tables
@@ -323,6 +340,12 @@ ALTER TABLE `django_session`
   ADD KEY `django_session_expire_date_a5c62663` (`expire_date`);
 
 --
+-- Индекси за таблица `main_document`
+--
+ALTER TABLE `main_document`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -342,7 +365,7 @@ ALTER TABLE `auth_group_permissions`
 -- AUTO_INCREMENT for table `auth_permission`
 --
 ALTER TABLE `auth_permission`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT for table `auth_user`
@@ -372,13 +395,19 @@ ALTER TABLE `django_admin_log`
 -- AUTO_INCREMENT for table `django_content_type`
 --
 ALTER TABLE `django_content_type`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `django_migrations`
 --
 ALTER TABLE `django_migrations`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+
+--
+-- AUTO_INCREMENT for table `main_document`
+--
+ALTER TABLE `main_document`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Ограничения за дъмпнати таблици
