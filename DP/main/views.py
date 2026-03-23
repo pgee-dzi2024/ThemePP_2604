@@ -1,9 +1,15 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from rest_framework import status
-from .serializers import DocumentSerializer
-import pytesseract
-from PIL import Image
+from django.shortcuts import render
+
+def index(request):
+    return render(request, 'main/index.html')
+
+def index(request):
+    return HttpResponse("РАБОТИ")
+
+def index(request):
+    return render(request, 'main/index.html')
 
 
 # Ако сте на Windows и получите грешка, че Tesseract не е намерен,
