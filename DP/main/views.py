@@ -4,7 +4,7 @@ from rest_framework import status
 from .serializers import DocumentSerializer
 import pytesseract
 from PIL import Image
-
+pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
 
 # Ако сте на Windows и получите грешка, че Tesseract не е намерен,
 # разкоментирайте долния ред и сложете точния път до tesseract.exe:
