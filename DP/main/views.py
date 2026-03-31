@@ -1,3 +1,4 @@
+from django.shortcuts import render
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
@@ -6,10 +7,6 @@ import pytesseract
 from PIL import Image
 pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
 
-
-# Ако сте на Windows и получите грешка, че Tesseract не е намерен,
-# разкоментирайте долния ред и сложете точния път до tesseract.exe:
-# pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
 
 class DocumentUploadView(APIView):
     def post(self, request, *args, **kwargs):
@@ -47,3 +44,4 @@ class DocumentUploadView(APIView):
 
                 # Ако данните не са валидни (напр. не е качен файл)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
