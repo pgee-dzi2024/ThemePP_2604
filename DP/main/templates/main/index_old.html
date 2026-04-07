@@ -22,146 +22,186 @@
     <!-- Libraries -->
     <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
     <link href="{% static 'css/style.css' %}" rel="stylesheet">
+    <!-- Vue.js 3 -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <!-- Axios -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </head>
 
 <body>
-<div class="container-xxl bg-white p-0">
+    <div id='app' class="container-xxl bg-white p-0">
 
-<!-- NAVBAR -->
-<nav class="navbar navbar-expand-lg bg-white navbar-light px-4">
-    <a href="#" class="navbar-brand">
-        <h1 class="m-0 text-primary">Дигитален скенер</h1>
-    </a>
-</nav>
+        <!-- NAVBAR -->
+        <nav class="navbar navbar-expand-lg bg-white navbar-light px-4">
+            <a href="#" class="navbar-brand">
+                <h1 class="m-0 text-primary">Дигитален скенер</h1>
+            </a>
+        </nav>
 
-<!-- HEADER -->
-<div class="container-fluid bg-light p-5">
-    <div class="container">
-        <h1 class="display-5 mb-4">
-            Дигитализация на <span class="text-primary">транспортна документация</span>
-        </h1>
-        <p>
-            Сканиране, OCR разпознаване и централен дигитален архив на CMR, пътни листове и фактури.
-        </p>
-    </div>
-</div>
-
-<!-- UPLOAD / OCR -->
-<div class="container-fluid bg-primary p-5">
-    <div class="container">
-        <div class="row g-3">
-            <div class="col-md-4">
-                <input type="file" class="form-control py-3">
-            </div>
-            <div class="col-md-4">
-                <select class="form-select py-3">
-                    <option selected>Тип документ</option>
-                    <option>CMR</option>
-                    <option>Пътен лист</option>
-                    <option>Фактура</option>
-                </select>
-            </div>
-            <div class="col-md-4">
-                <button class="btn btn-dark w-100 py-3">
-                    OCR разпознаване
-                </button>
+        <!-- HEADER -->
+        <div class="container-fluid bg-light p-5">
+            <div class="container">
+                <h1 class="display-5 mb-4">
+                    Дигитализация на <span class="text-primary">транспортна документация</span>
+                </h1>
+                <p>
+                    Сканиране, OCR разпознаване и централен дигитален архив на CMR, пътни листове и фактури.
+                </p>
             </div>
         </div>
-    </div>
-</div>
 
-<!-- FEATURES -->
-<div class="container-xxl py-5">
-    <div class="container">
-        <h2 class="text-center mb-5">Основни функционалности</h2>
-        <div class="row g-4 text-center">
-            <div class="col-md-4">
-                <h5>Сканиране</h5>
-                <p>Заснемане и качване на документи</p>
-            </div>
-            <div class="col-md-4">
-                <h5>OCR разпознаване</h5>
-                <p>Автоматично извличане на текст</p>
-            </div>
-            <div class="col-md-4">
-                <h5>Дигитален архив</h5>
-                <p>Централизирано и сигурно съхранение</p>
-            </div>
-            <div class="col-md-4">
-                <h5>Търсене</h5>
-                <p>По номер на курс, CMR или клиент</p>
-            </div>
-            <div class="col-md-4">
-                <h5>Мобилно използване</h5>
-                <p>Заснемане от мобилни устройства</p>
-            </div>
-            <div class="col-md-4">
-                <h5>Интеграция</h5>
-                <p>Свързване със счетоводни и TMS системи</p>
+        <!-- UPLOAD / OCR -->
+        <div class="container-fluid bg-primary p-5">
+            <div class="container">
+                <div class="row g-3">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-4">
+                        <input class="form-control py-3" type="file" @change="onFileChange" accept="image/*">
+                    </div>
+                    <div class="col-md-4">
+                        <button class="btn btn-dark w-100 py-3" @click="uploadDocument">
+                            OCR разпознаване
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-</div>
 
-<!-- WORK PROCESS -->
-<div class="container-xxl py-5 bg-light">
-    <div class="container">
-        <h2 class="text-center mb-5">Реален работен процес</h2>
-        <ol>
-            <li>Предаване на хартиени документи от шофьор</li>
-            <li>Сканиране или заснемане</li>
-            <li>OCR разпознаване на текста</li>
-            <li>Проверка и корекция</li>
-            <li>Запазване в дигиталния архив</li>
-        </ol>
-    </div>
-</div>
-
-<!-- ROLES -->
-<div class="container-xxl py-5">
-    <div class="container">
-        <h2 class="text-center mb-5">Потребителски роли</h2>
-        <div class="row text-center">
-            <div class="col-md-3">
-                <h5>Шофьор</h5>
-                <p>Качване на документи</p>
-            </div>
-            <div class="col-md-3">
-                <h5>Диспечер</h5>
-                <p>Контрол на курсове</p>
-            </div>
-            <div class="col-md-3">
-                <h5>Счетоводител</h5>
-                <p>Фактуриране и отчети</p>
-            </div>
-            <div class="col-md-3">
-                <h5>Администратор</h5>
-                <p>Управление на системата</p>
+        <!-- FEATURES -->
+        <div class="container-xxl py-5">
+            <div class="container">
+                <h2 class="text-center mb-5">Избран файл: </h2>
+                    <!-- Преглед на избраната снимка -->
+                    <div v-if="previewUrl" class="mb-3 text-center">
+                        <img :src="previewUrl" alt="Preview" class="img-fluid rounded">
+                    </div>
             </div>
         </div>
+
+        <!-- WORK PROCESS -->
+        <div class="container-xxl py-5 bg-light">
+            <div class="container">
+                <h2 class="text-center mb-5">Извлечен текст (Редакция):</h2>
+                <div v-if="!extractedText && !isLoading" class="text-muted flex-grow-1 d-flex align-items-center justify-content-center">
+                    Текстът ще се появи тук след сканиране...
+                </div>
+                <textarea v-if="extractedText || isLoading"
+                          v-model="extractedText"
+                          class="form-control flex-grow-1"
+                          rows="10"
+                          :disabled="isLoading"
+                          placeholder="Извлеченият текст..."></textarea>
+            </div>
+        </div>
+
+        <!-- ROLES -->
+        <div class="container-xxl py-5">
+            <div class="container">
+                <h2 class="text-center mb-5">Потребителски роли</h2>
+                <div class="row text-center">
+                    <div class="col-md-3">
+                        <h5>Шофьор</h5>
+                        <p>Качване на документи</p>
+                    </div>
+                    <div class="col-md-3">
+                        <h5>Диспечер</h5>
+                        <p>Контрол на курсове</p>
+                    </div>
+                    <div class="col-md-3">
+                        <h5>Счетоводител</h5>
+                        <p>Фактуриране и отчети</p>
+                    </div>
+                    <div class="col-md-3">
+                        <h5>Администратор</h5>
+                        <p>Управление на системата</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- BENEFITS -->
+        <div class="container-xxl py-5 bg-light">
+            <div class="container">
+                <h2 class="text-center mb-5">Ползи за фирмата</h2>
+                <ul>
+                    <li>Намаляване на времето за обработка на документи</li>
+                    <li>По-добра проследимост на курсовете</li>
+                    <li>Централизиран дигитален архив</li>
+                    <li>По-ниски административни разходи</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- FOOTER -->
+        <div class="container-fluid bg-dark text-white p-4 text-center">
+            <p class="mb-0">
+                Дигитален скенер – Вътрешна система за транспортна документация
+            </p>
+        </div>
     </div>
-</div>
+    <script>
+        const { createApp, ref } = Vue;
 
-<!-- BENEFITS -->
-<div class="container-xxl py-5 bg-light">
-    <div class="container">
-        <h2 class="text-center mb-5">Ползи за фирмата</h2>
-        <ul>
-            <li>Намаляване на времето за обработка на документи</li>
-            <li>По-добра проследимост на курсовете</li>
-            <li>Централизиран дигитален архив</li>
-            <li>По-ниски административни разходи</li>
-        </ul>
-    </div>
-</div>
+        createApp({
+            setup() {
+                const selectedFile = ref(null);
+                const previewUrl = ref(null);
+                const extractedText = ref('');
+                const isLoading = ref(false);
+                const errorMessage = ref('');
 
-<!-- FOOTER -->
-<div class="container-fluid bg-dark text-white p-4 text-center">
-    <p class="mb-0">
-        Дигитален скенер – Вътрешна система за транспортна документация
-    </p>
-</div>
+                // При избиране на файл
+                const onFileChange = (event) => {
+                    const file = event.target.files[0];
+                    if (file) {
+                        selectedFile.value = file;
+                        previewUrl.value = URL.createObjectURL(file);
+                        extractedText.value = ''; // Изчистваме стария текст
+                        errorMessage.value = '';
+                    }
+                };
 
-</div>
+                // Изпращане към бекенда
+                const uploadDocument = async () => {
+                    if (!selectedFile.value) return;
+
+                    isLoading.value = true;
+                    errorMessage.value = '';
+
+                    // Използваме FormData, защото изпращаме файл
+                    const formData = new FormData();
+                    formData.append('image', selectedFile.value);
+
+                    try {
+                        // Изпращаме POST заявка към създадения API endpoint
+                        const response = await axios.post('/api/upload/', formData, {
+                            headers: {
+                                'Content-Type': 'multipart/form-data'
+                            }
+                        });
+
+                        // Задаваме извлечения текст в текстовото поле
+                        extractedText.value = response.data.extracted_text;
+
+                    } catch (error) {
+                        console.error(error);
+                        errorMessage.value = "Възникна грешка при обработката на изображението.";
+                    } finally {
+                        isLoading.value = false;
+                    }
+                };
+
+                return {
+                    selectedFile,
+                    previewUrl,
+                    extractedText,
+                    isLoading,
+                    errorMessage,
+                    onFileChange,
+                    uploadDocument
+                }
+            }
+        }).mount('#app');
+    </script>
 </body>
 </html>
