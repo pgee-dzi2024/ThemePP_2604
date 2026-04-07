@@ -1,7 +1,10 @@
 from django.urls import path
-from django.views.generic import TemplateView
 from .views import DocumentUploadView
+from django.views.generic import TemplateView
 
+urlpatterns = [
+    path('', TemplateView.as_view(template_name='main/index.html'), name='home'),
+]
 app_name = 'main'  # Добра практика е да задаваме име на приложението
 
 urlpatterns = [
