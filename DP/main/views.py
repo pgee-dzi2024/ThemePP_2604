@@ -4,11 +4,17 @@ from rest_framework.response import Response
 from rest_framework import status
 from .serializers import DocumentSerializer
 import pytesseract
-from PIL import Image
+from PIL import Image, ImageOps, ImageFilter
 pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
 
 
 class DocumentUploadView(APIView):
+    def _preprocess_image(self, img):
+        img = img.convert('L')
+        img = ImageOps.autocontrast(img)
+        img = img.filter(ImageFilter.MedianFilter())
+        return img
+
     def post(self, request, *args, **kwargs):
         # Подаваме данните от заявката (включително файла) на сериализатора
         serializer = DocumentSerializer(data=request.data)
@@ -20,11 +26,14 @@ class DocumentUploadView(APIView):
             try:
                 # Отваряме запазената снимка чрез библиотеката Pillow
                 img = Image.open(document.image.path)
+                img = self._preprocess_image(img)
 
-                # Извличаме текста чрез Tesseract.
-                # Задаваме български и английски език (lang='bul+eng').
-                # Уверете се, че сте инсталирали българския езиков пакет за Tesseract!
-                extracted_text = pytesseract.image_to_string(img, lang='bul+eng')
+                config = '--oem 1 --psm 6'
+                extracted_text = pytesseract.image_to_string(
+                    img,
+                    lang='bul+eng',
+                    config=config
+                )
 
                 # Обновяваме записа в базата данни с извлечения текст
                 document.extracted_text = extracted_text
