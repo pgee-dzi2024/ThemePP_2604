@@ -14,3 +14,4 @@ class Document(models.Model):
     def __str__(self):
         # Това определя как ще се показва обектът в административния панел
         return f"Документ {self.id} - {self.uploaded_at.strftime('%d.%m.%Y %H:%M')}"
+
