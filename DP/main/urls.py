@@ -2,15 +2,11 @@ from django.urls import path
 from .views import DocumentUploadView
 from django.views.generic import TemplateView
 
-urlpatterns = [
-    path('', TemplateView.as_view(template_name='main/index.html'), name='home'),
-]
 app_name = 'main'  # Добра практика е да задаваме име на приложението
 
 urlpatterns = [
     # 1. Път за основната страница с интерфейса (Frontend с Vue.js)
-    # Използваме вградения TemplateView, за да заредим директно HTML файла,
-    # който ще създадем в следващата стъпка.
+    # Използваме вградения TemplateView, за да заредим директно HTML файла на шаблона
     path('', TemplateView.as_view(template_name='main/index.html'), name='home'),
     path('old', TemplateView.as_view(template_name='main/index_old.html'), name='home'),
 
