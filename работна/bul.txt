@@ -1,0 +1,5 @@
+Сложи файла bul.traineddata в папката tessdata на Tesseract.
+Най-простият вариант в PowerShell, пуснат като Administrator:
+Invoke-WebRequest `
+  -Uri "https://github.com/tesseract-ocr/tessdata_fast/raw/main/bul.traineddata" `
+  -OutFile "C:\Program Files\Tesseract-OCR\tessdata\bul.traineddata"
